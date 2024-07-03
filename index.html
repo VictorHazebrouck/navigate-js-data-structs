@@ -12,9 +12,14 @@
         <div id="container-header">
             <h1>Function Test Exercise</h1>
         </div>
+        <div id="container-buttons">
+            <button @click="$store.texteditor.setCode()">Restart</button>
+            <button @click="$store.texteditor.runCode()">Run Code</button>
+            <button @click="$store.tests.runTest()">Test</button>
+        </div>
         <div id="container-codes">
             <div id="editor-head">
-                <h3>script.js</h3>
+                <h3>script</h3>
             </div>
             <div id="editor"></div>
             <div id="console-head">
@@ -22,18 +27,16 @@
             </div>
             <div id="console"></div>
         </div>
-        <div id="container-footer">
-            <button @click="$store.texteditor.runCode()">Run Tests</button>
-        </div>
         <script type="module" src="/index.js"></script>
     </body>
 </html>
 <style>
     body {
+        padding: 0 10vh 10vh;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 8fr 1fr;
-        grid-template-areas: "header" "content" "footer";
+        grid-template-rows: 1fr 1fr 8fr;
+        grid-template-areas: "header" "buttons" "content";
     }
     #container-header {
         display: flex;
@@ -48,7 +51,7 @@
         justify-content: center;
 
         display: grid;
-        grid-template-columns: 45% 45%;
+        grid-template-columns: 1fr 1fr;
         grid-template-rows: 30px 8fr;
         grid-template-areas: "header-code header-console" "content-code content-console";
 
@@ -57,6 +60,8 @@
             background-color: black;
             padding-left: 20px;
             color: white;
+            display: flex;
+            align-items: center;
         }
         #editor {
             grid-area: content-code;
@@ -67,6 +72,8 @@
             color: white;
             padding-left: 20px;
             border-left: 1px solid grey;
+            display: flex;
+            align-items: center;
         }
         #console {
             border-left: 1px solid grey;
@@ -74,10 +81,10 @@
         }
     }
 
-    #container-footer {
-        grid-area: footer;
+    #container-buttons {
+        grid-area: buttons;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
     }
 </style>

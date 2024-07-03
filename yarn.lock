@@ -999,11 +999,6 @@ type-check@^0.4.0, type-check@~0.4.0:
   dependencies:
     prelude-ls "^1.2.1"
 
-typescript@^5.5.3:
-  version "5.5.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.5.3.tgz#e1b0a3c394190838a0b168e771b0ad56a0af0faa"
-  integrity sha512-/hreyEujaB0w76zKo6717l3L0o/qEUtRgdvUBvlkhoWeOVMjMuHNHk0BRBzikzuGDqNmPQbg5ifMEqsHLiIUcQ==
-
 uri-js@^4.2.2:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/uri-js/-/uri-js-4.4.1.tgz#9b1a52595225859e55f669d928f88c6c57f2a77e"

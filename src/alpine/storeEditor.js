@@ -47,15 +47,23 @@ export default {
             consoleEditor.setValue(logsText);
             consoleEditor.clearSelection();
 
-            return { success: true, res: logsText };
+            return { success: true, capturedLogs: capturedLogs, codeInput: code };
         } catch (error) {
             const errorText = error.message;
 
             consoleEditor.setValue(errorText);
             consoleEditor.clearSelection();
 
-            return { success: false, res: errorText };
+            return { success: false };
         }
+    },
+    setCode(data = "//hello from new exercise") {
+        const editor = this.getEditor();
+        const console = this.getConsole();
+
+        console.setValue("");
+        editor.setValue(data);
+        editor.clearSelection();
     },
     /** initializes the code and output containers */
     init() {

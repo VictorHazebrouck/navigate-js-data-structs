@@ -1,7 +1,10 @@
+import Alpine from "alpinejs";
+
 export default {
     test: "yo",
     runTest() {
-        console.log("hahah");
+        const data = Alpine.store("texteditor").runCode()
+        console.log(data);
     },
     init() {},
 };

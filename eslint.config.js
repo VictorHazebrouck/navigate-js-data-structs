@@ -1,6 +1,16 @@
 import jsdoc from "eslint-plugin-jsdoc";
 
 export default [
+    {
+        ignores: [
+            "node_modules/",
+            "dist/",
+            "build/",
+            "*.min.js",
+            "src/vendor/*.js",
+            "public/**/*.min.js",
+        ],
+    },
     jsdoc.configs["flat/recommended"],
     {
         rules: {
@@ -19,13 +29,5 @@ export default [
             "jsdoc/tag-lines": "off",
             "jsdoc/no-undefined-types": "off",
         },
-        ignores: [
-            "node_modules/",
-            "dist/",
-            "build/",
-            "*.min.js",
-            "src/vendor/*.js",
-            "public/**/*.min.js",
-        ],
     },
 ];
