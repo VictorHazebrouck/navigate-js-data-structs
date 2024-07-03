@@ -9,12 +9,48 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body x-data>
-    <h1>Function Test Exercise</h1>
-    <p>Write the <code>add(a, b)</code> function below:</p>
-    <div id="editor" style="height: 500px; width: 500px"></div>
-    <br /><br />
-    <button @click="$store.tests.runTests">Run Tests</button>
-    <div id="results"></div>
+    <div id="container-header">
+      <h1>Function Test Exercise</h1>
+    </div>
+    <div id="container-codes">
+      <div id="editor"></div>
+      <div id="console"></div>
+    </div>
+    <div id="container-footer">
+      <button @click="$store.tests.runTests">Run Tests</button>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
+<style>
+  body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 8fr 1fr;
+    grid-template-areas: "header" "content" "footer";
+  }
+  #container-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: header;
+  }
+
+  #container-codes {
+    grid-area: content;
+    display: flex;
+    justify-content: space-around;
+
+    #editor,
+    #console {
+      width: 45%;
+      height: 100%;
+    }
+  }
+  #container-footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
