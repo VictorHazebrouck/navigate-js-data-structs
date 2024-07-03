@@ -1,83 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vite App</title>
 
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-  <body x-data x-on:keydown.enter.ctrl="$store.texteditor.runCode()">
-    <div id="container-header">
-      <h1>Function Test Exercise</h1>
-    </div>
-    <div id="container-codes">
-      <div id="editor-head">
-        <h3>script.js</h3>
-      </div>
-      <div id="editor"></div>
-      <div id="console-head">
-        <h3>console output</h3>
-      </div>
-      <div id="console"></div>
-    </div>
-    <div id="container-footer">
-      <button @click="$store.texteditor.runCode()">Run Tests</button>
-    </div>
-    <script type="module" src="/index.js"></script>
-  </body>
+        <link rel="stylesheet" href="/style.css" />
+    </head>
+    <body x-data x-on:keydown.enter.ctrl="$store.texteditor.runCode()">
+        <div id="container-header">
+            <h1>Function Test Exercise</h1>
+        </div>
+        <div id="container-codes">
+            <div id="editor-head">
+                <h3>script.js</h3>
+            </div>
+            <div id="editor"></div>
+            <div id="console-head">
+                <h3>console output</h3>
+            </div>
+            <div id="console"></div>
+        </div>
+        <div id="container-footer">
+            <button @click="$store.texteditor.runCode()">Run Tests</button>
+        </div>
+        <script type="module" src="/index.js"></script>
+    </body>
 </html>
 <style>
-  body {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 8fr 1fr;
-    grid-template-areas: "header" "content" "footer";
-  }
-  #container-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-area: header;
-  }
-
-  #container-codes {
-    grid-area: content;
-
-    justify-content: center;
-
-    display: grid;
-    grid-template-columns: 45% 45%;
-    grid-template-rows: 30px 8fr;
-    grid-template-areas: "header-code header-console" "content-code content-console";
-
-    #editor-head {
-      grid-area: header-code;
-      background-color: black;
-      padding-left: 20px;
-      color: white;
+    body {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 8fr 1fr;
+        grid-template-areas: "header" "content" "footer";
     }
-    #editor {
-      grid-area: content-code;
+    #container-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-area: header;
     }
-    #console-head {
-      grid-area: header-console;
-      background-color: black;
-      color: white;
-      padding-left: 20px;
-      border-left: 1px solid grey;
+
+    #container-codes {
+        grid-area: content;
+
+        justify-content: center;
+
+        display: grid;
+        grid-template-columns: 45% 45%;
+        grid-template-rows: 30px 8fr;
+        grid-template-areas: "header-code header-console" "content-code content-console";
+
+        #editor-head {
+            grid-area: header-code;
+            background-color: black;
+            padding-left: 20px;
+            color: white;
+        }
+        #editor {
+            grid-area: content-code;
+        }
+        #console-head {
+            grid-area: header-console;
+            background-color: black;
+            color: white;
+            padding-left: 20px;
+            border-left: 1px solid grey;
+        }
+        #console {
+            border-left: 1px solid grey;
+            grid-area: content-console;
+        }
     }
-    #console {
-      border-left: 1px solid grey;
-      grid-area: content-console;
+
+    #container-footer {
+        grid-area: footer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-  }
-  
-  #container-footer {
-    grid-area: footer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 </style>

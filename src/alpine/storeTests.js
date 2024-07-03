@@ -1,7 +1,7 @@
 export default {
-  test: "yo",
-  runTest() {
-    console.log("hahah");
-  },
-  init() {},
+    test: "yo",
+    runTest() {
+        console.log("hahah");
+    },
+    init() {},
 };
