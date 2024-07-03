@@ -1,8 +1,8 @@
 import Alpine from "alpinejs";
-import textEditor from "./text-editor";
-
-window.Alpine = Alpine;
-Alpine.start();
+import textEditor from "./storeEditor";
+import tests from "./storeTests";
 
 Alpine.store("texteditor", textEditor);
+Alpine.store("testssss", tests);
 
+export default Alpine;
