@@ -1,13 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+
+    <link rel="stylesheet" href="/style.css" />
   </head>
-  <body>
-    <div id="app"></div>
+  <body x-data>
+    <h1>Function Test Exercise</h1>
+    <p>Write the <code>add(a, b)</code> function below:</p>
+    <div id="editor" style="height: 500px; width: 500px"></div>
+    <br /><br />
+    <button @click="$store.tests.runTests">Run Tests</button>
+    <div id="results"></div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
