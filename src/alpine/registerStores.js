@@ -3,6 +3,9 @@ import textEditor from "./storeEditor";
 import tests from "./storeTests";
 
 Alpine.store("texteditor", textEditor);
-Alpine.store("testssss", tests);
+Alpine.store("tests", tests);
+
+window.Alpine = Alpine;
+Alpine.start();
 
 export default Alpine;
