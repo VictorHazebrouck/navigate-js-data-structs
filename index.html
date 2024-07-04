@@ -46,11 +46,11 @@
             </button>
             <button
                 @click="$store.tests.newTest()"
-                style="color: green;"
+                x-bind:style="$store.tests.isTestPassed && {color: 'green'}"
                 title="alt + N"
                 x-show="$store.tests.isTestPassed === true"
             >
-                <i class="fa-solid fa-plus"></i>
+                <i class="fa-solid fa-forward"></i>
                 <h2>Next</h2>
             </button>
         </div>

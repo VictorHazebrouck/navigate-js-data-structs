@@ -64,13 +64,18 @@ export default {
 
         Alpine.store("texteditor").setCode(this.currentTest.initialCode);
     },
-    newTest() {
+    newTest(force = false) {
         if (!this.remainingTests.length) {
             console.error("No more tests remaining");
             return;
         }
 
-        const indexFromRef = Math.floor(Math.random() * (this.remainingTests.length - 1));
+        if(!this.isTestPassed && !force){
+            console.error("Please pass the test first")
+            return
+        }
+
+        const indexFromRef = Math.floor(Math.random() * this.remainingTests.length);
         const indexFromData = this.remainingTests[indexFromRef];
         this.remainingTests.splice(indexFromRef, 1);
 
@@ -82,5 +87,7 @@ export default {
         for (let i = 0; i < dummyTests.length; i++) {
             this.remainingTests.push(i);
         }
+
+        this.newTest(true)
     },
 };
