@@ -4,7 +4,7 @@ import "ace-builds/src-noconflict/mode-javascript";
 
 class Editor {
     constructor() {
-        this.editor = ace.edit("editor");
+        const editor = ace.edit("editor");
         editor.setTheme("ace/theme/monokai");
         editor.session.setMode("ace/mode/javascript");
         editor.setFontSize(18);
@@ -20,13 +20,16 @@ class Editor {
             },
         });
 
-        this.console = ace.edit("console");
+        const console = ace.edit("console");
         console.setTheme("ace/theme/monokai");
         console.session.setMode("ace/mode/text");
         console.setReadOnly(true);
         console.renderer.setShowGutter(false);
         console.setHighlightActiveLine(false);
         console.setFontSize(18);
+
+        this.editor = editor;
+        this.console = console;
     }
 
     getEditor() {
@@ -89,15 +92,12 @@ class Editor {
         }
     }
     setCode(data) {
-        const editor = this.getEditor();
-        const console = this.getConsole();
-
-        console.setValue("");
-        editor.setValue(data);
-        editor.clearSelection();
+        this.console.setValue("");
+        this.editor.setValue(data);
+        this.editor.clearSelection();
     }
 }
 
-const editor = new Editor()
+const editor = new Editor();
 
-export default editor
+export default editor;

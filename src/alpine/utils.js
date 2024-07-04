@@ -29,10 +29,12 @@ export default {
             }
         }, 1000);
 
-        eventBus.on("testInvalidated", ()=>{
+        const handleTestInvalidated = () =>{
             clearInterval(intervalId);
             this.mode = "menu";
             eventBus.off("testInvalidated");
+        }
+        eventBus.on("testInvalidated", ()=>{
         })
 
         this.mode = "game";
