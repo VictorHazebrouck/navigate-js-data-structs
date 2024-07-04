@@ -26,6 +26,7 @@ const dummyTests = [
 export default {
     remainingTests: [],
     currentTest: null,
+    isTestPassed: null,
     runTest() {
         const { success, capturedLogs, codeInput } = Alpine.store("texteditor").runCode();
 
@@ -34,24 +35,31 @@ export default {
             return false;
         }
 
-        console.log("CODE: ", codeInput);
-        console.log("LOGS: ", capturedLogs);
-
         for (let invalidInput of this.currentTest.invalidInputs) {
             if (codeInput.includes(invalidInput)) {
-                console.error("INVALIT THINGY: ", invalidInput);
+                this.isTestPassed = false;
+                return console.error("INVALIT THINGY: ", invalidInput);
             }
         }
+
+        let correctAnswersCount = 0;
 
         for (let expectedOutput of this.currentTest.expectedOutputs) {
             if (capturedLogs.includes(expectedOutput)) {
                 console.log("success !");
+                correctAnswersCount++;
             }
+        }
+
+        if (this.currentTest.expectedOutputs.length === correctAnswersCount) {
+            this.isTestPassed = true;
+        } else {
+            this.isTestPassed = false;
         }
     },
     restartTest() {
-        if(!this.currentTest){
-            return
+        if (!this.currentTest) {
+            return;
         }
 
         Alpine.store("texteditor").setCode(this.currentTest.initialCode);
@@ -59,13 +67,14 @@ export default {
     newTest() {
         if (!this.remainingTests.length) {
             console.error("No more tests remaining");
-            return
+            return;
         }
 
         const indexFromRef = Math.floor(Math.random() * (this.remainingTests.length - 1));
         const indexFromData = this.remainingTests[indexFromRef];
         this.remainingTests.splice(indexFromRef, 1);
 
+        this.isTestPassed = null;
         this.currentTest = dummyTests[indexFromData];
         this.restartTest();
     },
