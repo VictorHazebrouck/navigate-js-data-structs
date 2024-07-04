@@ -33,7 +33,6 @@
             </button>
             <button
                 x-show="$store.tests.currentTest && !$store.tests.isTestPassed"
-                x-transition
                 x-bind:style="$store.tests.isTestPassed === false && {color: 'red'}"
                 @click="$store.tests.runTest()"
                 title="alt + T"
@@ -46,7 +45,6 @@
                 x-bind:style="$store.tests.isTestPassed && {color: 'green'}"
                 title="alt + N"
                 x-show="$store.tests.isTestPassed"
-                x-transition
             >
                 <i class="fa-solid fa-forward"></i>
                 <h2>Next</h2>
