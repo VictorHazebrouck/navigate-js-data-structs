@@ -1,10 +1,77 @@
 import Alpine from "alpinejs";
 
-export default {
-    test: "yo",
-    runTest() {
-        const data = Alpine.store("texteditor").runCode()
-        console.log(data);
+const dummyTests = [
+    {
+        initialCode: "//log hello world and haha",
+        expectedOutputs: ["hello world", "haha"],
+        invalidInputs: [],
     },
-    init() {},
+    {
+        initialCode: "//log 'haha'",
+        expectedOutputs: ["haha"],
+        invalidInputs: [],
+    },
+    {
+        initialCode: "//log hello world",
+        expectedOutputs: ["hello world"],
+        invalidInputs: [],
+    },
+    {
+        initialCode: "//log 1,2,3,4",
+        expectedOutputs: ["1", "2", "3", "4"],
+        invalidInputs: ["console.log(1)", "console.log(2)", "console.log(3)", "console.log(4)"],
+    },
+];
+
+export default {
+    remainingTests: [],
+    currentTest: null,
+    runTest() {
+        const { success, capturedLogs, codeInput } = Alpine.store("texteditor").runCode();
+
+        if (!success || !this.currentTest) {
+            console.log("INVALID INPUT");
+            return false;
+        }
+
+        console.log("CODE: ", codeInput);
+        console.log("LOGS: ", capturedLogs);
+
+        for (let invalidInput of this.currentTest.invalidInputs) {
+            if (codeInput.includes(invalidInput)) {
+                console.error("INVALIT THINGY: ", invalidInput);
+            }
+        }
+
+        for (let expectedOutput of this.currentTest.expectedOutputs) {
+            if (capturedLogs.includes(expectedOutput)) {
+                console.log("success !");
+            }
+        }
+    },
+    restartTest() {
+        if(!this.currentTest){
+            return
+        }
+
+        Alpine.store("texteditor").setCode(this.currentTest.initialCode);
+    },
+    newTest() {
+        if (!this.remainingTests.length) {
+            console.error("No more tests remaining");
+            return
+        }
+
+        const indexFromRef = Math.floor(Math.random() * (this.remainingTests.length - 1));
+        const indexFromData = this.remainingTests[indexFromRef];
+        this.remainingTests.splice(indexFromRef, 1);
+
+        this.currentTest = dummyTests[indexFromData];
+        this.restartTest();
+    },
+    init() {
+        for (let i = 0; i < dummyTests.length; i++) {
+            this.remainingTests.push(i);
+        }
+    },
 };

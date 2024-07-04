@@ -57,7 +57,7 @@ export default {
             return { success: false };
         }
     },
-    setCode(data = "//hello from new exercise") {
+    setCode(data) {
         const editor = this.getEditor();
         const console = this.getConsole();
 
@@ -79,6 +79,14 @@ export default {
         editor.setFontSize(18);
         editor.setOptions({
             useWorker: false,
+        });
+
+        editor.commands.addCommand({
+            name: "insertLog",
+            bindKey: { win: "Alt-L", mac: "Alt-L" },
+            exec: function() {
+                editor.session.insert(editor.getCursorPosition(), `console.log()`);
+            },
         });
 
         //store a pointer to the editor rather that the whode editor in the Alpine state Manager
