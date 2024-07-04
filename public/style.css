@@ -47,16 +47,34 @@ button {
     cursor: pointer;
     color: whitesmoke;
     background-color: transparent;
-    
+
     h2 {
         margin-left: 10px;
         font-size: 18px;
         line-height: 1.1;
     }
-    
-    &:hover{
+
+    &:hover {
         outline: 1px solid whitesmoke;
         /* background-color: red; */
+    }
+
+    &:active {
+        animation: click-animation 0.3s ease-out;
+    }
+
+    @keyframes click-animation {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(0.9);
+        }
+
+        100% {
+            transform: scale(1);
+        }
     }
 }
 
