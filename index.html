@@ -48,11 +48,12 @@
                 @click="$store.tests.newTest()"
                 x-bind:style="$store.tests.isTestPassed && {color: 'green'}"
                 title="alt + N"
-                x-show="$store.tests.isTestPassed === true"
+                x-show="$store.tests.isTestPassed"
             >
                 <i class="fa-solid fa-forward"></i>
                 <h2>Next</h2>
             </button>
+            <h1 @click="console.lgo($store.tests.isTestPassed)">log</h1>
         </div>
         <div id="container-codes">
             <div id="editor-head">
