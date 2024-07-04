@@ -12,113 +12,167 @@
         />
         <link rel="stylesheet" href="/style.css" />
     </head>
-    <body
-        x-data
-        x-on:keydown.enter.ctrl="$store.texteditor.runCode()"
-        x-on:keydown.alt.n="$store.tests.newTest()"
-        x-on:keydown.alt.r="$store.tests.restartTest()"
-        x-on:keydown.alt.t="$store.tests.runTest()"
-    >
-        <div id="container-header">
-            <h1>Navigate js data structures</h1>
-        </div>
-        <div id="container-buttons">
-            <button @click="$store.texteditor.runCode()" title="ctrl + Enter">
-                <i class="fa-solid fa-terminal" style="font-size: 14px"></i>
-                <h2>Run</h2>
-            </button>
-            <button @click="$store.tests.restartTest()" title="alt + R">
-                <i class="fa-solid fa-sync-alt"></i>
-                <h2>Reset</h2>
-            </button>
-            <button
-                x-show="$store.tests.currentTest && !$store.tests.isTestPassed"
-                x-bind:style="$store.tests.isTestPassed === false && {color: 'red'}"
-                @click="$store.tests.runTest()"
-                title="alt + T"
-            >
-                <i class="fa-solid fa-play"></i>
-                <h2>Test</h2>
-            </button>
-            <button
-                @click="$store.tests.newTest()"
-                x-bind:style="$store.tests.isTestPassed && {color: 'green'}"
-                title="alt + N"
-                x-show="$store.tests.isTestPassed"
-            >
-                <i class="fa-solid fa-forward"></i>
-                <h2>Next</h2>
-            </button>
-            <h4 id="timer" x-text="$store.tests.timer"></h4>
-        </div>
-        <div id="container-codes">
-            <div id="editor-head">
-                <h3>script</h3>
+    <body x-data>
+        <div id="container-menu" x-show="$store.utils.mode === 'menu'">
+            <div class="title">
+                <h1>log.io</h1>
             </div>
-            <div id="editor"></div>
-            <div id="console-head">
-                <h3>console output</h3>
+            <button @click="$store.utils.startGameEasyMode()"><h2>easy</h2></button>
+            <button @click="$store.utils.startGameMediumMode()"><h2>medium</h2></button>
+            <button @click="$store.utils.startGameHardMode()"><h2>hard</h2></button>
+        </div>
+        <div
+            id="container-main"
+            x-show="$store.utils.mode === 'game'"
+            x-on:keydown.enter.ctrl="$store.texteditor.runCode()"
+            x-on:keydown.alt.n="$store.tests.newTest()"
+            x-on:keydown.alt.r="$store.tests.restartTest()"
+            x-on:keydown.alt.t="$store.tests.runTest()"
+        >
+            <div id="container-header">
+                <!-- <h1>Navigate js data structures</h1> -->
+                <h1 id="timer" x-text="$store.utils.timer"></h1>
             </div>
-            <div id="console"></div>
+            <div id="container-buttons">
+                <button @click="$store.texteditor.runCode()" title="ctrl + Enter">
+                    <i class="fa-solid fa-terminal" style="font-size: 14px"></i>
+                    <h2>Run</h2>
+                </button>
+                <button @click="$store.tests.restartTest()" title="alt + R">
+                    <i class="fa-solid fa-sync-alt"></i>
+                    <h2>Reset</h2>
+                </button>
+                <button
+                    x-show="$store.tests.currentTest && !$store.tests.isTestPassed"
+                    x-bind:style="$store.tests.isTestPassed === false && {color: 'red'}"
+                    @click="$store.tests.runTest()"
+                    title="alt + T"
+                >
+                    <i class="fa-solid fa-play"></i>
+                    <h2>Test</h2>
+                </button>
+                <button
+                    @click="$store.tests.newTest()"
+                    x-bind:style="$store.tests.isTestPassed && {color: 'green'}"
+                    title="alt + N"
+                    x-show="$store.tests.isTestPassed"
+                >
+                    <i class="fa-solid fa-forward"></i>
+                    <h2>Next</h2>
+                </button>
+            </div>
+            <div id="container-codes">
+                <div id="editor-head">
+                    <h3>script</h3>
+                </div>
+                <div id="editor"></div>
+                <div id="console-head">
+                    <h3>console output</h3>
+                </div>
+                <div id="console"></div>
+            </div>
         </div>
         <script type="module" src="/index.js"></script>
     </body>
 </html>
 <style>
     body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    #container-main {
+        height: 100%;
+        width: 100%;
         padding: 0 10vh 8vh;
+
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr 8fr;
         grid-template-areas: "header" "buttons" "content";
-    }
-    #container-header {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        grid-area: header;
-    }
 
-    #container-codes {
-        grid-area: content;
-
-        justify-content: center;
-
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 30px 1fr;
-        grid-template-areas: "header-code header-console" "content-code content-console";
-
-        #editor-head {
-            grid-area: header-code;
-            background-color: black;
-            padding-left: 20px;
-            color: white;
+        #container-header {
             display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-area: header;
+        }
+
+        #container-buttons {
+            grid-area: buttons;
+            display: flex;
+            justify-content: flex-start;
             align-items: center;
         }
-        #editor {
-            grid-area: content-code;
-        }
-        #console-head {
-            grid-area: header-console;
-            background-color: black;
-            color: white;
-            padding-left: 20px;
-            border-left: 1px solid grey;
-            display: flex;
-            align-items: center;
-        }
-        #console {
-            border-left: 1px solid grey;
-            grid-area: content-console;
+
+        #container-codes {
+            grid-area: content;
+
+            justify-content: center;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 30px 1fr;
+            grid-template-areas: "header-code header-console" "content-code content-console";
+
+            #editor-head {
+                grid-area: header-code;
+                background-color: black;
+                padding-left: 20px;
+                color: white;
+                display: flex;
+                align-items: center;
+            }
+            #editor {
+                grid-area: content-code;
+            }
+            #console-head {
+                grid-area: header-console;
+                background-color: black;
+                color: white;
+                padding-left: 20px;
+                border-left: 1px solid grey;
+                display: flex;
+                align-items: center;
+            }
+            #console {
+                border-left: 1px solid grey;
+                grid-area: content-console;
+            }
         }
     }
 
-    #container-buttons {
-        grid-area: buttons;
+    #container-menu {
+        height: 80vh;
+        width: 60vh;
+        background-color: black;
+        border-radius: 25px;
+
         display: flex;
-        justify-content: flex-start;
+        flex-direction: column;
         align-items: center;
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 50%;
+
+            h1 {
+                width: 80%;
+                text-align: center;
+            }
+        }
+
+        button {
+            width: 80%;
+            /* background-color: red; */
+            margin: 0;
+            height: 50px;
+            margin-bottom: 15px;
+        }
     }
 </style>

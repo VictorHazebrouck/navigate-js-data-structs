@@ -1,4 +1,5 @@
-import Alpine from "alpinejs";
+import CodeEditor from "../CodeEditor";
+import eventBus from "../EvenBus";
 
 const dummyTests = [
     {
@@ -52,9 +53,8 @@ export default {
     remainingTests: [],
     currentTest: null,
     isTestPassed: null,
-    timer: 55,
     runTest() {
-        const { success, capturedLogs, codeInput } = Alpine.store("texteditor").runCode();
+        const { success, capturedLogs, codeInput } = CodeEditor.runCode();
 
         if (!success || !this.currentTest) {
             console.log("INVALID INPUT");
@@ -64,6 +64,7 @@ export default {
         for (let invalidInput of this.currentTest.invalidInputs) {
             if (codeInput.includes(invalidInput)) {
                 this.isTestPassed = false;
+                eventBus.emit("testInvalidated");
                 return console.error("INVALIT THINGY: ", invalidInput);
             }
         }
@@ -80,6 +81,7 @@ export default {
         if (this.currentTest.expectedOutputs.length === correctAnswersCount) {
             this.isTestPassed = true;
         } else {
+            eventBus.emit("testInvalidated");
             this.isTestPassed = false;
         }
     },
@@ -88,7 +90,7 @@ export default {
             return;
         }
 
-        Alpine.store("texteditor").setCode(this.currentTest.initialCode);
+        CodeEditor.setCode(this.currentTest.initialCode);
     },
     newTest(force = false) {
         if (!this.remainingTests.length) {
@@ -109,11 +111,23 @@ export default {
         this.currentTest = dummyTests[indexFromData];
         this.restartTest();
     },
-    init() {
+    newSession() {
         for (let i = 0; i < dummyTests.length; i++) {
             this.remainingTests.push(i);
         }
 
         this.newTest(true);
     },
+    init() {
+        if (this._isInit) {
+            return;
+        } else {
+            this._isInit = true;
+        }
+
+        eventBus.on("newSessionLaunched", () => {
+            this.newSession();
+        });
+    },
+    _isInit: false,
 };

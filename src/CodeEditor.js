@@ -2,9 +2,40 @@ import ace from "ace-builds/src-noconflict/ace";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/mode-javascript";
 
-export default {
-    getEditor: null,
-    getConsole: null,
+class Editor {
+    constructor() {
+        this.editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.session.setMode("ace/mode/javascript");
+        editor.setFontSize(18);
+        editor.setOptions({
+            useWorker: false,
+        });
+
+        editor.commands.addCommand({
+            name: "insertLog",
+            bindKey: { win: "Alt-L", mac: "Alt-L" },
+            exec: function () {
+                editor.session.insert(editor.getCursorPosition(), `console.log()`);
+            },
+        });
+
+        this.console = ace.edit("console");
+        console.setTheme("ace/theme/monokai");
+        console.session.setMode("ace/mode/text");
+        console.setReadOnly(true);
+        console.renderer.setShowGutter(false);
+        console.setHighlightActiveLine(false);
+        console.setFontSize(18);
+    }
+
+    getEditor() {
+        return this.editor;
+    }
+
+    getConsole() {
+        return this.console;
+    }
 
     runCode() {
         const code = this.getEditor().getValue();
@@ -56,7 +87,7 @@ export default {
 
             return { success: false };
         }
-    },
+    }
     setCode(data) {
         const editor = this.getEditor();
         const console = this.getConsole();
@@ -64,48 +95,9 @@ export default {
         console.setValue("");
         editor.setValue(data);
         editor.clearSelection();
-    },
-    /** initializes the code and output containers */
-    init() {
-        if (this._isInit) {
-            return;
-        } else {
-            this._isInit = true;
-        }
+    }
+}
 
-        const editor = ace.edit("editor");
-        editor.setTheme("ace/theme/monokai");
-        editor.session.setMode("ace/mode/javascript");
-        editor.setFontSize(18);
-        editor.setOptions({
-            useWorker: false,
-        });
+const editor = new Editor()
 
-        editor.commands.addCommand({
-            name: "insertLog",
-            bindKey: { win: "Alt-L", mac: "Alt-L" },
-            exec: function() {
-                editor.session.insert(editor.getCursorPosition(), `console.log()`);
-            },
-        });
-
-        //store a pointer to the editor rather that the whode editor in the Alpine state Manager
-        this.getEditor = () => {
-            return editor;
-        };
-
-        const console = ace.edit("console");
-        console.setTheme("ace/theme/monokai");
-        console.session.setMode("ace/mode/text");
-        console.setReadOnly(true);
-        console.renderer.setShowGutter(false);
-        console.setHighlightActiveLine(false);
-        console.setFontSize(18);
-
-        //store a pointer to the console rather than the whole console in the state Manager
-        this.getConsole = () => {
-            return console;
-        };
-    },
-    _isInit: false,
-};
+export default editor
