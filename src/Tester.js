@@ -8,6 +8,7 @@ class Tester {
     constructor(editor) {
         this.editor = editor;
     }
+    
     async runCode() {
         return await this.editor.runCode();
     }
