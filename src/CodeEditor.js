@@ -1,6 +1,7 @@
 import ace from "ace-builds/src-noconflict/ace";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/mode-javascript";
+import "ace-builds/src-noconflict/mode-json";
 
 class Editor {
     constructor() {
@@ -10,6 +11,7 @@ class Editor {
         editor.setFontSize(18);
         editor.setOptions({
             useWorker: false,
+            wrap: true,
         });
 
         editor.commands.addCommand({
@@ -25,11 +27,15 @@ class Editor {
 
         const consoleOutput = ace.edit("console");
         consoleOutput.setTheme("ace/theme/monokai");
-        consoleOutput.session.setMode("ace/mode/text");
+        consoleOutput.session.setMode("ace/mode/json");
         consoleOutput.setReadOnly(true);
         consoleOutput.renderer.setShowGutter(false);
         consoleOutput.setHighlightActiveLine(false);
         consoleOutput.setFontSize(18);
+        consoleOutput.setOptions({
+            wrap: true,
+            vScrollBarAlwaysVisible: false,
+        });
 
         this.editor = editor;
         this.console = consoleOutput;

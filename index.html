@@ -13,18 +13,24 @@
         <link rel="stylesheet" href="/style.css" />
     </head>
     <body x-data>
-        <div id="container-menu" x-show="$store.utils.mode === 'menu'">
+        <div id="container-menu" x-show="$store.game.mode === 'menu'">
             <div class="title">
                 <h1>log.io</h1>
             </div>
-            <button @click="$store.utils.startGameEasyMode()"><h2>easy</h2></button>
-            <button @click="$store.utils.startGameMediumMode()"><h2>medium</h2></button>
-            <button @click="$store.utils.startGameHardMode()"><h2>hard</h2></button>
+            <button @click="$store.game.startGameEasyMode()">
+                <h2>Zen Mode</h2>
+            </button>
+            <button @click="$store.game.startGameMediumMode()">
+                <h2>Single Mistake</h2>
+            </button>
+            <button @click="$store.game.startGameHardMode()">
+                <h2>Speed Run</h2>
+            </button>
         </div>
         <div
             id="container-main"
             x-data="tests"
-            x-show="$store.utils.mode === 'game'"
+            x-show="$store.game.mode === 'game'"
             x-on:keydown.enter.ctrl="runCode"
             x-on:keydown.alt.n="newTest"
             x-on:keydown.alt.r="restartTest"
@@ -32,7 +38,8 @@
         >
             <div id="container-header">
                 <!-- <h1>Navigate js data structures</h1> -->
-                <h1 id="timer" x-text="$store.utils.timer"></h1>
+                <h1 id="timer" x-text="$store.game.timer"></h1>
+                <h1 id="timer" x-text="$store.game.goodAnswersNb"></h1>
             </div>
             <div id="container-buttons">
                 <button @click="runCode" title="ctrl + Enter">

@@ -12,24 +12,28 @@ function newTimer(ctx, amount) {
 }
 
 export default {
+    /** @type  {"menu" | "game"}*/
     mode: "menu",
-    timer: 0,
+    /** @type {number | null} */
+    timer: null,
+    goodAnswersNb: 0,
     startGameEasyMode() {
         this.timer = null;
         this.mode = "game";
         eventBus.emit("newSessionLaunched");
     },
     startGameMediumMode() {
-        this.timer = 90;
-        const intervalId = setInterval(() => {
-            this.timer--;
-            if (this.timer === 0) {
-                clearInterval(intervalId);
-            }
-        }, 1000);
+        const handleTestInvalidated = () => {
+            alert("WRONG ANSWER. best score: " + this.goodAnswersNb);
+            this.goodAnswersNb = 0;
+            this.mode = "menu"
+            eventBus.off("testInvalidated", handleTestInvalidated);
+        };
 
-        this.mode = "game";
+        eventBus.on("testInvalidated", handleTestInvalidated);
+        
         eventBus.emit("newSessionLaunched");
+        this.mode = "game";
     },
     startGameHardMode() {
         const intervalId = newTimer(this, 60);
@@ -44,5 +48,12 @@ export default {
 
         this.mode = "game";
         eventBus.emit("newSessionLaunched");
+    },
+    init() {
+        const handleGoodAnswer = () => {
+            this.goodAnswersNb++;
+        };
+
+        eventBus.on("testPassed", handleGoodAnswer);
     },
 };

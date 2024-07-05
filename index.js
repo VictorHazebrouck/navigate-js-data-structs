@@ -8,7 +8,7 @@ import storeGame from "./src/alpine/storeGame";
 const editor = new Editor();
 const tester = new Tester(editor);
 
-Alpine.store("utils", storeGame);
+Alpine.store("game", storeGame);
 Alpine.data("tests", () => dataTests(tester));
 
 window.Alpine = Alpine;

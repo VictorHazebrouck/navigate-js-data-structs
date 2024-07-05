@@ -13,9 +13,14 @@ export default (tester) => {
         },
 
         async runTest() {
+            if (this.isTestPassed) {
+                return;
+            }
+
             const [success, details] = await tester.runTest();
 
             if (success) {
+                eventBus.emit("testPassed");
                 this.isTestPassed = true;
             } else {
                 eventBus.emit("testInvalidated");
@@ -30,7 +35,6 @@ export default (tester) => {
             }
 
             this.isTestPassed = null;
-            eventBus.emit("testPassed");
             tester.newTest();
         },
 
