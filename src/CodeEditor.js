@@ -17,19 +17,22 @@ class Editor {
             bindKey: { win: "Alt-L", mac: "Alt-L" },
             exec: function () {
                 editor.session.insert(editor.getCursorPosition(), `console.log()`);
+
+                const { row, column } = editor.getCursorPosition();
+                editor.selection.moveTo(row, column - 1);
             },
         });
 
-        const console = ace.edit("console");
-        console.setTheme("ace/theme/monokai");
-        console.session.setMode("ace/mode/text");
-        console.setReadOnly(true);
-        console.renderer.setShowGutter(false);
-        console.setHighlightActiveLine(false);
-        console.setFontSize(18);
+        const consoleOutput = ace.edit("console");
+        consoleOutput.setTheme("ace/theme/monokai");
+        consoleOutput.session.setMode("ace/mode/text");
+        consoleOutput.setReadOnly(true);
+        consoleOutput.renderer.setShowGutter(false);
+        consoleOutput.setHighlightActiveLine(false);
+        consoleOutput.setFontSize(18);
 
         this.editor = editor;
-        this.console = console;
+        this.console = consoleOutput;
     }
 
     getEditor() {
@@ -40,7 +43,7 @@ class Editor {
         return this.console;
     }
 
-    runCode() {
+    async runCode() {
         const code = this.getEditor().getValue();
         const consoleEditor = this.getConsole();
 
@@ -72,7 +75,13 @@ class Editor {
                 originalConsoleLog.apply(console, args);
             };
 
-            eval(code);
+            const asyncWrapper = `
+                (async function userCode(){
+                    ${code}
+                })()
+            `;
+
+            await eval(asyncWrapper);
 
             console.log = originalConsoleLog; // Restore original console.log
 
@@ -91,6 +100,7 @@ class Editor {
             return { success: false };
         }
     }
+
     setCode(data) {
         this.console.setValue("");
         this.editor.setValue(data);
@@ -98,6 +108,4 @@ class Editor {
     }
 }
 
-const editor = new Editor();
-
-export default editor;
+export default Editor;

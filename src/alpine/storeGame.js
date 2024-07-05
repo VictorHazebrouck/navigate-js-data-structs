@@ -6,7 +6,7 @@ export default {
     startGameEasyMode() {
         this.timer = null;
         this.mode = "game";
-        eventBus.emit("newSessionLaunched")
+        eventBus.emit("newSessionLaunched");
     },
     startGameMediumMode() {
         this.timer = 90;
@@ -18,7 +18,7 @@ export default {
         }, 1000);
 
         this.mode = "game";
-        eventBus.emit("newSessionLaunched")
+        eventBus.emit("newSessionLaunched");
     },
     startGameHardMode() {
         this.timer = 60;
@@ -29,15 +29,14 @@ export default {
             }
         }, 1000);
 
-        const handleTestInvalidated = () =>{
+        const handleTestInvalidated = () => {
             clearInterval(intervalId);
             this.mode = "menu";
-            eventBus.off("testInvalidated");
-        }
-        eventBus.on("testInvalidated", ()=>{
-        })
+            eventBus.off("testInvalidated", handleTestInvalidated);
+        };
+        eventBus.on("testInvalidated", handleTestInvalidated);
 
         this.mode = "game";
-        eventBus.emit("newSessionLaunched")
+        eventBus.emit("newSessionLaunched");
     },
 };
