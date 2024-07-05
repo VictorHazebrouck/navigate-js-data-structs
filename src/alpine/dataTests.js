@@ -1,4 +1,4 @@
-import eventBus from "../EvenBus";
+import eventBus from "../EventBus";
 
 export default (tester) => {
     return {
@@ -18,7 +18,6 @@ export default (tester) => {
             if (success) {
                 this.isTestPassed = true;
             } else {
-                alert(details);
                 eventBus.emit("testInvalidated");
                 this.isTestPassed = false;
             }

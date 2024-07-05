@@ -1,4 +1,4 @@
-import "./src/EvenBus";
+import "./src/EventBus";
 import Alpine from "alpinejs";
 import Editor from "./src/CodeEditor";
 import Tester from "./src/Tester";
