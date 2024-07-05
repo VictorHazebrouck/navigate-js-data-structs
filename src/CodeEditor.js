@@ -33,8 +33,8 @@ class Editor {
         consoleOutput.setHighlightActiveLine(false);
         consoleOutput.setFontSize(18);
         consoleOutput.setOptions({
+            useWorker: false,
             wrap: true,
-            vScrollBarAlwaysVisible: false,
         });
 
         this.editor = editor;
