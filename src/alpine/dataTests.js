@@ -42,7 +42,12 @@ export default (tester) => {
             tester.newSession(true);
         },
 
+        lastTest(){
+            tester.lastTest()
+        },
+
         init() {
+            eventBus.on("lastTest", this.lastTest);
             eventBus.on("newSessionLaunched", this.newSession);
         },
     };

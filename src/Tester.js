@@ -8,7 +8,7 @@ class Tester {
     constructor(editor) {
         this.editor = editor;
     }
-    
+
     async runCode() {
         return await this.editor.runCode();
     }
@@ -50,7 +50,7 @@ class Tester {
     }
 
     newTest(force = false) {
-        if (!this.remainingTests.length) {
+        if (!this.remainingTests.length && !force) {
             console.error("No more tests remaining");
             return false;
         }
@@ -69,6 +69,14 @@ class Tester {
         for (let i = 0; i < this.tests.length; i++) {
             this.remainingTests.push(i);
         }
+
+        this.newTest(true);
+    }
+
+    lastTest() {
+        console.log(tests[tests.length - 1]);
+        this.tests.push(tests[tests.length - 1]);
+        this.remainingTests.push(0);
 
         this.newTest(true);
     }

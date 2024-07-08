@@ -49,6 +49,10 @@ export default {
         this.mode = "game";
         eventBus.emit("newSessionLaunched");
     },
+    lastTest(){
+        eventBus.emit("lastTest")
+        this.mode = "game"
+    },
     init() {
         const handleGoodAnswer = () => {
             this.goodAnswersNb++;

@@ -1,20 +1,5 @@
 [
     {
-        "initialCode": "//log hello world and haha",
-        "expectedOutputs": ["hello world", "haha"],
-        "invalidInputs": []
-    },
-    {
-        "initialCode": "//log 'haha'",
-        "expectedOutputs": ["haha"],
-        "invalidInputs": []
-    },
-    {
-        "initialCode": "//log hello world",
-        "expectedOutputs": ["hello world"],
-        "invalidInputs": []
-    },
-    {
         "initialCode": "//log 1,2,3,4 individually using a loop",
         "expectedOutputs": ["1", "2", "3", "4"],
         "invalidInputs": ["console.log(1)", "console.log(2)", "console.log(3)", "console.log(4)"]
@@ -40,5 +25,204 @@
         "initialCode": "// Log the price of the item inside the cart object\nconst cart = {\n\titem: {\n\t\tname: 'Chair',\n\t\tprice: 50,\n\t\tquantity: 2\n\t},\n\tcustomer: {\n\t\tname: 'Alice',\n\t\temail: 'alice@example.com'\n\t}\n};",
         "expectedOutputs": ["50"],
         "invalidInputs": ["console.log('50')", "console.log(\"50\")", "console.log(50)"]
+    },
+    {
+        "initialCode": "// We receive a pokemon's data from an api,\n// Log the id of the pokemon\n\nconst response = await fetch(\"https://pokeapi.co/api/v2/pokemon/ditto\")\nconst data = await response.json()",
+        "expectedOutputs": ["132"],
+        "invalidInputs": ["console.log('132')", "console.log(132)", "console.log(\"132\")"]
+    },
+    {
+        "initialCode": "// We receive a pokemon ability from an api\n// Log the French name of this ability\n\nconst response = await fetch(\"https://pokeapi.co/api/v2/ability/battle-armor\");\nconst data = await response.json();",
+        "expectedOutputs": ["Armurbaston"],
+        "invalidInputs": ["console.log(\"Armurbaston\")", "console.log('Armurbaston')"]
+    },
+    {
+        "initialCode": "// Log the first name of the user\n\nconst user = {\n\tprofile: {\n\t\tname: {\n\t\t\tfirst: 'Jane',\n\t\t\tlast: 'Doe'\n\t\t},\n\t\tage: 25,\n\t\tlocation: 'California'\n\t},\n\tcredentials: {\n\t\temail: 'jane.doe@example.com',\n\t\tpassword: 'securepassword'\n\t}\n};",
+        "expectedOutputs": ["Jane"],
+        "invalidInputs": ["console.log('Jane')", "console.log(\"Jane\")"]
+    },
+    {
+        "initialCode": "// Using a loop \n// Log the title of each task that is completed\n\nconst tasks = [\n\t{ title: 'Task 1', completed: true },\n\t{ title: 'Task 2', completed: false },\n\t{ title: 'Task 3', completed: true },\n\t{ title: 'Task 4', completed: false }\n];",
+        "expectedOutputs": ["Task 1", "Task 3"],
+        "invalidInputs": [
+            "console.log('Task 1')",
+            "console.log('Task 3')",
+            "console.log(\"Task 1\")",
+            "console.log(\"Task 3\")"
+        ]
+    },
+    {
+        "initialCode": "// Using a loop\n// Log the name of each student who scored above 80\n\nconst students = [\n\t{ name: 'Alice', score: 90 },\n\t{ name: 'Bob', score: 75 },\n\t{ name: 'Charlie', score: 85 },\n\t{ name: 'David', score: 60 }\n];",
+        "expectedOutputs": ["Alice", "Charlie"],
+        "invalidInputs": [
+            "console.log('Alice')",
+            "console.log('Charlie')",
+            "console.log(\"Alice\")",
+            "console.log(\"Charlie\")"
+        ]
+    },
+    {
+        "initialCode": "// Log the email address of the customer\n\nconst order = {\n\torderNumber: '12345',\n\torderDate: '2024-07-05',\n\tcustomer: {\n\t\tname: 'Alice',\n\t\temail: 'alice@example.com',\n\t\taddress: {\n\t\t\tstreet: '123 Street',\n\t\t\tcity: 'New York',\n\t\t\tstate: 'NY',\n\t\t\tzip: '10001'\n\t\t}\n\t},\n\titems: [\n\t\t{ name: 'Item 1', price: 50, quantity: 2 },\n\t\t{ name: 'Item 2', price: 30, quantity: 1 }\n\t]\n};",
+        "expectedOutputs": ["alice@example.com"],
+        "invalidInputs": ["console.log('alice@example.com')", "console.log(\"alice@example.com\")"]
+    },
+    {
+        "initialCode": "// Log the street address of the customer\n\nconst order = {\n\torderNumber: '12345',\n\torderDate: '2024-07-05',\n\tcustomer: {\n\t\tname: 'Alice',\n\t\temail: 'alice@example.com',\n\t\taddress: {\n\t\t\tstreet: '123 Street',\n\t\t\tcity: 'New York',\n\t\t\tstate: 'NY',\n\t\t\tzip: '10001'\n\t\t}\n\t},\n\titems: [\n\t\t{ name: 'Item 1', price: 50, quantity: 2 },\n\t\t{ name: 'Item 2', price: 30, quantity: 1 }\n\t]\n};",
+        "expectedOutputs": ["123 Street"],
+        "invalidInputs": ["console.log('123 Street')", "console.log(\"123 Street\")"]
+    },
+    {
+        "initialCode": "// Log the street address of the main address of the customer\nconst order = {\n\torderNumber: '12345',\n\torderDate: '2024-07-05',\n\tcustomer: {\n\t\tname: 'Alice',\n\t\temail: 'alice@example.com',\n\t\taddresses: [\n\t\t\t{\n\t\t\t\tstreet: '123 Street',\n\t\t\t\tcity: 'New York',\n\t\t\t\tstate: 'NY',\n\t\t\t\tzip: '10001',\n\t\t\t\tisMain: true\n\t\t\t},\n\t\t\t{\n\t\t\t\tstreet: '456 Avenue',\n\t\t\t\tcity: 'Los Angeles',\n\t\t\t\tstate: 'CA',\n\t\t\t\tzip: '90001',\n\t\t\t\tisMain: false\n\t\t\t}\n\t\t]\n\t},\n\titems: [\n\t\t{ name: 'Item 1', price: 50, quantity: 2 },\n\t\t{ name: 'Item 2', price: 30, quantity: 1 }\n\t]\n};",
+        "expectedOutputs": ["New York"],
+        "invalidInputs": ["console.log('New York')", "console.log(\"New York\")"]
+    },
+    {
+        "initialCode": "// Log the name of the company of the main supplier\n\nconst product = {\n\tid: '98765',\n\tname: 'Laptop',\n\tprice: 1200,\n\tsuppliers: [\n\t\t{\n\t\t\tcompany: 'Tech Supplies Co.',\n\t\t\tcontact: 'John Doe',\n\t\t\tphone: '123-456-7890',\n\t\t\tisMain: true\n\t\t},\n\t\t{\n\t\t\tcompany: 'Gadget Wholesale Inc.',\n\t\t\tcontact: 'Jane Smith',\n\t\t\tphone: '987-654-3210',\n\t\t\tisMain: false\n\t\t}\n\t]\n};",
+        "expectedOutputs": ["Tech Supplies Co."],
+        "invalidInputs": ["console.log('Tech Supplies Co.')", "console.log(\"Tech Supplies Co.\")"]
+    },
+    {
+        "initialCode": "// Fetch data from an API\n// Log the 'name' of the first user from the response\n\nconst response = await fetch('https://jsonplaceholder.typicode.com/users');\nconst data = await response.json();",
+        "expectedOutputs": ["Leanne Graham"],
+        "invalidInputs": ["console.log('Leanne Graham')", "console.log(\"Leanne Graham\")"]
+    },
+    {
+        "initialCode": "// Fetch a list of posts from an API\n// Log the title of the post with ID 3\n\nconst response = await fetch('https://jsonplaceholder.typicode.com/posts');\nconst data = await response.json();",
+        "expectedOutputs": ["ea molestias quasi exercitationem repellat qui ipsa sit aut"],
+        "invalidInputs": [
+            "console.log('ea molestias quasi exercitationem repellat qui ipsa sit aut')",
+            "console.log(\"ea molestias quasi exercitationem repellat qui ipsa sit aut\")"
+        ]
+    },
+    {
+        "initialCode": "// Fetch a list of cat breeds from an API\n// Log the name of the third cat breed\n\nconst response = await fetch('https://api.thecatapi.com/v1/breeds');\nconst data = await response.json();",
+        "expectedOutputs": ["American Bobtail"],
+        "invalidInputs": ["console.log('American Bobtail')", "console.log(\"American Bobtail\")"]
+    },
+    {
+        "initialCode": "// Fetch a list of cat breeds from an API\n// Using a loop,\n// Log the name of each cat breed\n\nconst response = await fetch('https://api.thecatapi.com/v1/breeds');\nconst data = await response.json();",
+        "expectedOutputs": [
+            "Abyssinian",
+            "Aegean",
+            "American Bobtail",
+            "American Curl",
+            "American Shorthair",
+            "American Wirehair",
+            "Arabian Mau",
+            "Australian Mist",
+            "Balinese",
+            "Bambino",
+            "Bengal",
+            "Birman",
+            "Bombay",
+            "British Longhair",
+            "British Shorthair",
+            "Burmese",
+            "Burmilla",
+            "California Spangled",
+            "Chantilly-Tiffany",
+            "Chartreux",
+            "Chausie",
+            "Cheetoh",
+            "Colorpoint Shorthair",
+            "Cornish Rex",
+            "Cymric",
+            "Cyprus",
+            "Devon Rex",
+            "Donskoy",
+            "Dragon Li",
+            "Egyptian Mau",
+            "European Burmese",
+            "Exotic Shorthair",
+            "Havana Brown",
+            "Himalayan",
+            "Japanese Bobtail",
+            "Javanese",
+            "Khao Manee",
+            "Korat",
+            "Kurilian",
+            "LaPerm",
+            "Maine Coon",
+            "Malayan",
+            "Manx",
+            "Munchkin",
+            "Nebelung",
+            "Norwegian Forest Cat",
+            "Ocicat",
+            "Oriental",
+            "Persian",
+            "Pixie-bob",
+            "Ragamuffin",
+            "Ragdoll",
+            "Russian Blue",
+            "Savannah",
+            "Scottish Fold",
+            "Selkirk Rex",
+            "Siamese",
+            "Siberian",
+            "Singapura",
+            "Snowshoe",
+            "Somali",
+            "Sphynx",
+            "Tonkinese",
+            "Toyger",
+            "Turkish Angora",
+            "Turkish Van",
+            "York Chocolate"
+        ],
+        "invalidInputs": []
+    },
+    {
+        "initialCode": "// Fetch move data from PokeAPI\n// Using a loop\n// Log the name of each move\n\nconst response = await fetch('https://pokeapi.co/api/v2/type/3');\nconst result = await response.json();",
+        "expectedOutputs": [
+            "gust",
+            "wing-attack",
+            "fly",
+            "peck",
+            "drill-peck",
+            "mirror-move",
+            "sky-attack",
+            "aeroblast",
+            "feather-dance",
+            "air-cutter",
+            "aerial-ace",
+            "bounce",
+            "roost",
+            "pluck",
+            "tailwind",
+            "air-slash",
+            "brave-bird",
+            "defog",
+            "chatter",
+            "sky-drop",
+            "acrobatics",
+            "hurricane",
+            "oblivion-wing",
+            "dragon-ascent",
+            "supersonic-skystrike--physical",
+            "supersonic-skystrike--special",
+            "beak-blast",
+            "floaty-fall",
+            "max-airstream",
+            "dual-wingbeat",
+            "bleakwind-storm"
+        ],
+        "invalidInputs": []
+    },
+    {
+        "initialCode": "// Fetch move data from PokeAPI\n// By looping through the object\n// Log the name of each key i.e: \"id\", \"moves\", ...\n\nconst response = await fetch('https://pokeapi.co/api/v2/type/3');\nconst result = await response.json();",
+        "expectedOutputs": [
+            "damage_relations",
+            "game_indices",
+            "generation",
+            "id",
+            "move_damage_class",
+            "moves",
+            "name",
+            "names",
+            "past_damage_relations",
+            "pokemon"
+        ],
+        "invalidInputs": []
     }
 ]
