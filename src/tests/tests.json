@@ -220,5 +220,176 @@
             "console.log(\"Alice\")",
             "console.log(\"Charlie\")"
         ]
+    },
+    {
+        "initialCode": "// Log the full name of the person\nconst person = {\n\tfirstName: 'Michael',\n\tlastName: 'Jordan',\n\tage: 50\n};",
+        "expectedOutputs": ["Michael Jordan"],
+        "invalidInputs": ["console.log('Michael Jordan')", "console.log(\"Michael Jordan\")"]
+    },
+    {
+        "initialCode": "// Using a loop\n// Log the name of each team member who has a role of 'Developer'\n\nconst team = [\n\t{ name: 'Alice', role: 'Developer' },\n\t{ name: 'Bob', role: 'Designer' },\n\t{ name: 'Charlie', role: 'Developer' }\n];",
+        "expectedOutputs": ["Alice", "Charlie"],
+        "invalidInputs": [
+            "console.log('Alice')",
+            "console.log('Charlie')",
+            "console.log(\"Alice\")",
+            "console.log(\"Charlie\")"
+        ]
+    },
+    {
+        "initialCode": "// Log the name of the product's supplier\n\nconst product = {\n\tname: 'Tablet',\n\tprice: 300,\n\tsupplier: {\n\t\tname: 'Electronics Ltd',\n\t\tcontact: 'support@example.com'\n\t}\n};",
+        "expectedOutputs": ["Electronics Ltd"],
+        "invalidInputs": ["console.log('Electronics Ltd')", "console.log(\"Electronics Ltd\")"]
+    },
+    {
+        "initialCode": "// Log the name of the highest-rated movie\nconst movies = [\n\t{ title: 'Movie A', rating: 8.2 },\n\t{ title: 'Movie B', rating: 9.0 },\n\t{ title: 'Movie C', rating: 7.5 }\n];",
+        "expectedOutputs": ["Movie B"],
+        "invalidInputs": ["console.log('Movie B')", "console.log(\"Movie B\")"]
+    },
+    {
+        "initialCode": "// Using a loop\n// Log the name of each student who passed (score >= 50)\n\nconst students = [\n\t{ name: 'Anna', score: 45 },\n\t{ name: 'Ben', score: 70 },\n\t{ name: 'Cara', score: 65 }\n];",
+        "expectedOutputs": ["Ben", "Cara"],
+        "invalidInputs": [
+            "console.log('Ben')",
+            "console.log('Cara')",
+            "console.log(\"Ben\")",
+            "console.log(\"Cara\")"
+        ]
+    },
+    {
+        "initialCode": "// Log the type of the vehicle\n\nconst vehicle = {\n\tbrand: 'Toyota',\n\ttype: 'SUV',\n\tprice: 40000\n};",
+        "expectedOutputs": ["SUV"],
+        "invalidInputs": ["console.log('SUV')", "console.log(\"SUV\")"]
+    },
+    {
+        "initialCode": "// Log the department of the employee\nconst employee = {\n\tname: 'John',\n\tage: 32,\n\tdepartment: 'Engineering'\n};",
+        "expectedOutputs": ["Engineering"],
+        "invalidInputs": ["console.log('Engineering')", "console.log(\"Engineering\")"]
+    },
+    {
+        "initialCode": "// Log the city of the user's current address\n\nconst user = {\n\tname: 'Emma',\n\taddresses: [\n\t\t{ city: 'Miami', state: 'FL', isCurrent: true },\n\t\t{ city: 'Orlando', state: 'FL', isCurrent: false }\n\t]\n};",
+        "expectedOutputs": ["Miami"],
+        "invalidInputs": ["console.log('Miami')", "console.log(\"Miami\")"]
+    },
+    {
+        "initialCode": "// Using a loop\n// Log the name of each event that has been marked as 'upcoming'\n\nconst events = [\n\t{ name: 'Event 1', upcoming: true },\n\t{ name: 'Event 2', upcoming: false },\n\t{ name: 'Event 3', upcoming: true }\n];",
+        "expectedOutputs": ["Event 1", "Event 3"],
+        "invalidInputs": [
+            "console.log('Event 1')",
+            "console.log('Event 3')",
+            "console.log(\"Event 1\")",
+            "console.log(\"Event 3\")"
+        ]
+    },
+    {
+        "initialCode": "// Log the name of the item's category\n\nconst item = {\n\tname: 'Laptop',\n\tprice: 1000,\n\tcategory: 'Electronics'\n};",
+        "expectedOutputs": ["Electronics"],
+        "invalidInputs": ["console.log('Electronics')", "console.log(\"Electronics\")"]
+    },
+    {
+        "initialCode": "// Log the contact email of the main manager\n\nconst company = {\n\tname: 'TechCorp',\n\tmanagers: [\n\t\t{ name: 'Tom', email: 'tom@techcorp.com', isMain: true },\n\t\t{ name: 'Jerry', email: 'jerry@techcorp.com', isMain: false }\n\t]\n};",
+        "expectedOutputs": ["tom@techcorp.com"],
+        "invalidInputs": ["console.log('tom@techcorp.com')", "console.log(\"tom@techcorp.com\")"]
+    },
+    {
+        "initialCode": "// Using a loop\n// Log the name of each employee who works in the Sales department\n\nconst employees = [\n\t{ name: 'Alice', department: 'Sales' },\n\t{ name: 'Bob', department: 'Marketing' },\n\t{ name: 'Charlie', department: 'Sales' }\n];",
+        "expectedOutputs": ["Alice", "Charlie"],
+        "invalidInputs": [
+            "console.log('Alice')",
+            "console.log('Charlie')",
+            "console.log(\"Alice\")",
+            "console.log(\"Charlie\")"
+        ]
+    },
+    {
+        "initialCode": "// Log the total price of the order\n\nconst order = {\n\titems: [\n\t\t{ name: 'Book', price: 15 },\n\t\t{ name: 'Pen', price: 2 },\n\t\t{ name: 'Notebook', price: 5 }\n\t]\n};",
+        "expectedOutputs": ["22"],
+        "invalidInputs": ["console.log(22)", "console.log('22')", "console.log(\"22\")"]
+    },
+    {
+        "initialCode": "// Using a loop\n// Log the name of each completed project\n\nconst projects = [\n\t{ name: 'Project A', completed: true },\n\t{ name: 'Project B', completed: false },\n\t{ name: 'Project C', completed: true }\n];",
+        "expectedOutputs": ["Project A", "Project C"],
+        "invalidInputs": [
+            "console.log('Project A')",
+            "console.log('Project C')",
+            "console.log(\"Project A\")",
+            "console.log(\"Project C\")"
+        ]
+    },
+    {
+        "initialCode": "// Log the customer's city\n\nconst customer = {\n\tname: 'Mia',\n\taddress: {\n\t\tcity: 'Houston',\n\t\tstate: 'TX',\n\t\tzip: '77001'\n\t}\n};",
+        "expectedOutputs": ["Houston"],
+        "invalidInputs": ["console.log('Houston')", "console.log(\"Houston\")"]
+    },
+    {
+        "initialCode": "// Log the user's email\n\nconst user = {\n\tusername: 'mark_smith',\n\temail: 'mark.smith@example.com',\n\tpassword: 'qwerty123'\n};",
+        "expectedOutputs": ["mark.smith@example.com"],
+        "invalidInputs": [
+            "console.log('mark.smith@example.com')",
+            "console.log(\"mark.smith@example.com\")"
+        ]
+    },
+    {
+        "initialCode": "// Using a loop\n// Log the name of each employee who has worked more than 5 years\n\nconst employees = [\n\t{ name: 'Alice', yearsWorked: 6 },\n\t{ name: 'Bob', yearsWorked: 3 },\n\t{ name: 'Charlie', yearsWorked: 8 }\n];",
+        "expectedOutputs": ["Alice", "Charlie"],
+        "invalidInputs": [
+            "console.log('Alice')",
+            "console.log('Charlie')",
+            "console.log(\"Alice\")",
+            "console.log(\"Charlie\")"
+        ]
+    },
+    {
+        "initialCode": "// Log the name of the author's book\n\nconst author = {\n\tname: 'George Orwell',\n\tbook: '1984',\n\tnationality: 'British'\n};",
+        "expectedOutputs": ["1984"],
+        "invalidInputs": ["console.log('1984')", "console.log(\"1984\")"]
+    },
+    {
+        "initialCode": "// Log the quantity of the first item in the cart\n\nconst cart = [\n\t{ name: 'Laptop', price: 1000, quantity: 1 },\n\t{ name: 'Mouse', price: 20, quantity: 2 }\n];",
+        "expectedOutputs": ["1"],
+        "invalidInputs": ["console.log(1)", "console.log('1')", "console.log(\"1\")"]
+    },
+    {
+        "initialCode": "// Using a loop\n// Log the name of each employee who works in the 'HR' department\n\nconst employees = [\n\t{ name: 'Sophia', department: 'HR' },\n\t{ name: 'Jack', department: 'Finance' },\n\t{ name: 'Oliver', department: 'HR' }\n];",
+        "expectedOutputs": ["Sophia", "Oliver"],
+        "invalidInputs": [
+            "console.log('Sophia')",
+            "console.log('Oliver')",
+            "console.log(\"Sophia\")",
+            "console.log(\"Oliver\")"
+        ]
+    },
+    {
+        "initialCode": "// Log the user's location\n\nconst user = {\n\tname: 'Mason',\n\tlocation: 'New York',\n\tage: 30\n};",
+        "expectedOutputs": ["New York"],
+        "invalidInputs": ["console.log('New York')", "console.log(\"New York\")"]
+    },
+    {
+        "initialCode": "// Using a loop\n// Log the name of each product that costs more than $20\n\nconst products = [\n\t{ name: 'Keyboard', price: 25 },\n\t{ name: 'Mouse', price: 15 },\n\t{ name: 'Monitor', price: 100 }\n];",
+        "expectedOutputs": ["Keyboard", "Monitor"],
+        "invalidInputs": [
+            "console.log('Keyboard')",
+            "console.log('Monitor')",
+            "console.log(\"Keyboard\")",
+            "console.log(\"Monitor\")"
+        ]
+    },
+    {
+        "initialCode": "// Log the publisher's name\n\nconst book = {\n\ttitle: 'The Catcher in the Rye',\n\tauthor: 'J.D. Salinger',\n\tpublisher: 'Little, Brown and Company'\n};",
+        "expectedOutputs": ["Little, Brown and Company"],
+        "invalidInputs": [
+            "console.log('Little, Brown and Company')",
+            "console.log(\"Little, Brown and Company\")"
+        ]
+    },
+    {
+        "initialCode": "// Using a loop\n// Log the name of each student who has registered for the course\n\nconst students = [\n\t{ name: 'Henry', registered: true },\n\t{ name: 'Olivia', registered: false },\n\t{ name: 'Ella', registered: true }\n];",
+        "expectedOutputs": ["Henry", "Ella"],
+        "invalidInputs": [
+            "console.log('Henry')",
+            "console.log('Ella')",
+            "console.log(\"Henry\")",
+            "console.log(\"Ella\")"
+        ]
     }
 ]
