@@ -27,16 +27,6 @@
         "invalidInputs": ["console.log('50')", "console.log(\"50\")", "console.log(50)"]
     },
     {
-        "initialCode": "// We receive a pokemon's data from an api,\n// Log the id of the pokemon\n\nconst response = await fetch(\"https://pokeapi.co/api/v2/pokemon/ditto\")\nconst data = await response.json()",
-        "expectedOutputs": ["132"],
-        "invalidInputs": ["console.log('132')", "console.log(132)", "console.log(\"132\")"]
-    },
-    {
-        "initialCode": "// We receive a pokemon ability from an api\n// Log the French name of this ability\n\nconst response = await fetch(\"https://pokeapi.co/api/v2/ability/battle-armor\");\nconst data = await response.json();",
-        "expectedOutputs": ["Armurbaston"],
-        "invalidInputs": ["console.log(\"Armurbaston\")", "console.log('Armurbaston')"]
-    },
-    {
         "initialCode": "// Log the first name of the user\n\nconst user = {\n\tprofile: {\n\t\tname: {\n\t\t\tfirst: 'Jane',\n\t\t\tlast: 'Doe'\n\t\t},\n\t\tage: 25,\n\t\tlocation: 'California'\n\t},\n\tcredentials: {\n\t\temail: 'jane.doe@example.com',\n\t\tpassword: 'securepassword'\n\t}\n};",
         "expectedOutputs": ["Jane"],
         "invalidInputs": ["console.log('Jane')", "console.log(\"Jane\")"]

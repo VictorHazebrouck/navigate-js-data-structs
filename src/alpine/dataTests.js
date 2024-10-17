@@ -23,6 +23,7 @@ export default (tester) => {
                 eventBus.emit("testPassed");
                 this.isTestPassed = true;
             } else {
+                alert(details)
                 eventBus.emit("testInvalidated");
                 this.isTestPassed = false;
             }

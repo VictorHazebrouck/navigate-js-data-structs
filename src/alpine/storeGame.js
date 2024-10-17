@@ -14,15 +14,20 @@ function newTimer(ctx, amount) {
 export default {
     /** @type  {"menu" | "game"}*/
     mode: "menu",
+    /** @type {"easy" | "medium" | "hard"} */
+    type: "easy",
     /** @type {number | null} */
     timer: null,
     goodAnswersNb: 0,
     startGameEasyMode() {
         this.timer = null;
         this.mode = "game";
+        this.type = "easy"
         eventBus.emit("newSessionLaunched");
     },
     startGameMediumMode() {
+        this.type = "medium";
+
         const handleTestInvalidated = () => {
             alert("WRONG ANSWER. best score: " + this.goodAnswersNb);
             this.goodAnswersNb = 0;
@@ -36,10 +41,12 @@ export default {
         this.mode = "game";
     },
     startGameHardMode() {
-        const intervalId = newTimer(this, 60);
+        this.type = "hard"
+        const intervalId = newTimer(this, 120);
 
         const handleTestInvalidated = () => {
             clearInterval(intervalId);
+            alert("Wrong asnwer, best score: " + this.goodAnswersNb)
             this.mode = "menu";
             eventBus.off("testInvalidated", handleTestInvalidated);
         };

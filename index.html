@@ -41,8 +41,7 @@
         >
             <div id="container-header">
                 <!-- <h1>Navigate js data structures</h1> -->
-                <h1 id="timer" x-text="$store.game.timer"></h1>
-                <h1 id="timer" x-text="$store.game.goodAnswersNb"></h1>
+                <h1 x-show="$store.game.type == 'hard'" id="timer" x-text="$store.game.timer + 's'"></h1>
             </div>
             <div id="container-buttons">
                 <button @click="runCode" title="ctrl + Enter">
@@ -71,6 +70,7 @@
                     <i class="fa-solid fa-forward"></i>
                     <h2>Next</h2>
                 </button>
+                <h1 id="goodAnswers" x-text="'Score : ' + $store.game.goodAnswersNb"></h1>
             </div>
             <div id="container-codes">
                 <div id="editor-head">
@@ -116,6 +116,12 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
+
+            #goodAnswers {
+                font-size: 24px;
+                margin-left: auto;
+                margin-right: 30px;
+            }
         }
 
         #container-codes {
