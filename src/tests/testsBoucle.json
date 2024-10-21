@@ -55,5 +55,106 @@
             "console.log(people[1].name)",
             "console.log(people[2].name)"
         ]
+    },
+    {
+        "initialCode": "// Log the first letter of each string in the 'words' array using a loop\nconst words = ['apple', 'banana', 'grape', 'strawberry'];",
+        "expectedOutputs": ["a", "b", "g", "s"],
+        "invalidInputs": [
+            "console.log('a')",
+            "console.log('b')",
+            "console.log('g')",
+            "console.log('s')",
+            "console.log(words[0][0])",
+            "console.log(words[1][0])"
+        ]
+    },
+    {
+        "initialCode": "// Log only the odd numbers from the 'numbers' array using a loop\nconst numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];",
+        "expectedOutputs": ["1", "3", "5", "7", "9"],
+        "invalidInputs": [
+            "console.log(1)",
+            "console.log(3)",
+            "console.log(5)",
+            "console.log(7)",
+            "console.log(9)",
+            "console.log(numbers[i] % 2 !== 0)"
+        ]
+    },
+    {
+        "initialCode": "// Log the square of each number in the 'numbers' array using a loop\nconst numbers = [1, 2, 3, 4, 5];",
+        "expectedOutputs": ["1", "4", "9", "16", "25"],
+        "invalidInputs": [
+            "console.log(1)",
+            "console.log(4)",
+            "console.log(9)",
+            "console.log(16)",
+            "console.log(25)",
+            "console.log(numbers[0] * numbers[0])"
+        ]
+    },
+    {
+        "initialCode": "// Log the reverse of each string in the 'words' array using a loop\nconst words = ['apple', 'banana', 'grape'];",
+        "expectedOutputs": ["elppa", "ananab", "eparg"],
+        "invalidInputs": [
+            "console.log('elppa')",
+            "console.log('ananab')",
+            "console.log('eparg')",
+            "console.log(words[0].split('').reverse().join(''))"
+        ]
+    },
+    {
+        "initialCode": "// Log the names of people older than 30 from the 'people' array\nconst people = [\n\t{name: 'Alice', age: 30},\n\t{name: 'Bob', age: 35},\n\t{name: 'Charlie', age: 25}\n];",
+        "expectedOutputs": ["Bob"],
+        "invalidInputs": ["console.log('Bob')", "console.log(people[1].name)"]
+    },
+    {
+        "initialCode": "// Log the sum of even numbers in the 'numbers' array\nconst numbers = [10, 15, 20, 25, 30];",
+        "expectedOutputs": ["60"],
+        "invalidInputs": ["console.log(60)", "console.log(numbers[0] + numbers[2] + numbers[4])"]
+    },
+    {
+        "initialCode": "// Log the index of each element in the 'items' array\nconst items = ['a', 'b', 'c', 'd'];",
+        "expectedOutputs": ["0", "1", "2", "3"],
+        "invalidInputs": [
+            "console.log(0)",
+            "console.log(1)",
+            "console.log(2)",
+            "console.log(3)",
+            "console.log(items.indexOf('a'))"
+        ]
+    },
+    {
+        "initialCode": "// Log the length of the longest word in the 'words' array\nconst words = ['apple', 'banana', 'grapefruit'];",
+        "expectedOutputs": ["10"],
+        "invalidInputs": ["console.log(10)", "console.log(words[2].length)"]
+    },
+    {
+        "initialCode": "// Log the sum of all the prices from the 'cart' array\nconst cart = [\n\t{item: 'Chair', price: 50},\n\t{item: 'Table', price: 100},\n\t{item: 'Lamp', price: 30}\n];",
+        "expectedOutputs": ["180"],
+        "invalidInputs": [
+            "console.log(180)",
+            "console.log(cart[0].price + cart[1].price + cart[2].price)"
+        ]
+    },
+    {
+        "initialCode": "// Log only the names of items that cost more than 50 from the 'cart' array\nconst cart = [\n\t{item: 'Chair', price: 50},\n\t{item: 'Table', price: 100},\n\t{item: 'Lamp', price: 30}\n];",
+        "expectedOutputs": ["Table"],
+        "invalidInputs": ["console.log('Table')", "console.log(cart[1].item)"]
+    },
+    {
+        "initialCode": "// Log the concatenation of all strings in the 'words' array\nconst words = ['Hello', 'world', '!'];",
+        "expectedOutputs": ["Helloworld!"],
+        "invalidInputs": [
+            "console.log('Helloworld!')",
+            "console.log(words[0] + words[1] + words[2])"
+        ]
+    },
+    {
+        "initialCode": "// Log the result of multiplying all numbers in the 'numbers' array\nconst numbers = [1, 2, 3, 4];",
+        "expectedOutputs": ["24"],
+        "invalidInputs": [
+            "console.log(24)",
+            "console.log(numbers[0] * numbers[1] * numbers[2] * numbers[3])"
+        ]
     }
 ]
