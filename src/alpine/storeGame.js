@@ -14,7 +14,7 @@ function newTimer(ctx, amount) {
 export default {
     /** @type  {"menu" | "game"}*/
     mode: "menu",
-    /** @type {"easy" | "medium" | "hard"} */
+    /** @type {"easy" | "medium" | "hard" | "boucle"} */
     type: "easy",
     /** @type {number | null} */
     timer: null,
@@ -22,8 +22,14 @@ export default {
     startGameEasyMode() {
         this.timer = null;
         this.mode = "game";
-        this.type = "easy"
+        this.type = "easy";
         eventBus.emit("newSessionLaunched");
+    },
+    startGameBoucleMode() {
+        this.timer = null;
+        this.mode = "game";
+        this.type = "boucle";
+        eventBus.emit("newSessionLaunched", {topic: "boucles"});
     },
     startGameMediumMode() {
         this.type = "medium";
@@ -31,22 +37,22 @@ export default {
         const handleTestInvalidated = () => {
             alert("WRONG ANSWER. best score: " + this.goodAnswersNb);
             this.goodAnswersNb = 0;
-            this.mode = "menu"
+            this.mode = "menu";
             eventBus.off("testInvalidated", handleTestInvalidated);
         };
 
         eventBus.on("testInvalidated", handleTestInvalidated);
-        
+
         eventBus.emit("newSessionLaunched");
         this.mode = "game";
     },
     startGameHardMode() {
-        this.type = "hard"
+        this.type = "hard";
         const intervalId = newTimer(this, 120);
 
         const handleTestInvalidated = () => {
             clearInterval(intervalId);
-            alert("Wrong asnwer, best score: " + this.goodAnswersNb)
+            alert("Wrong asnwer, best score: " + this.goodAnswersNb);
             this.mode = "menu";
             eventBus.off("testInvalidated", handleTestInvalidated);
         };
@@ -56,9 +62,9 @@ export default {
         this.mode = "game";
         eventBus.emit("newSessionLaunched");
     },
-    lastTest(){
-        eventBus.emit("lastTest")
-        this.mode = "game"
+    lastTest() {
+        eventBus.emit("lastTest");
+        this.mode = "game";
     },
     init() {
         const handleGoodAnswer = () => {

@@ -1,0 +1,59 @@
+[
+    {
+        "initialCode": "// Log each element of the array multiplied by 2 using a loop\nconst numbers = [1, 2, 3, 4, 5];",
+        "expectedOutputs": ["2", "4", "6", "8", "10"],
+        "invalidInputs": [
+            "console.log(2)",
+            "console.log(4)",
+            "console.log(6)",
+            "console.log(8)",
+            "console.log(10)",
+            "console.log(numbers[0] * 2)",
+            "console.log(numbers[i] * 2)"
+        ]
+    },
+    {
+        "initialCode": "// Log only the even numbers from the 'numbers' array\nconst numbers = [1, 2, 3, 4, 5, 6];",
+        "expectedOutputs": ["2", "4", "6"],
+        "invalidInputs": [
+            "console.log(numbers)",
+            "console.log(numbers[1])",
+            "console.log(numbers[i] % 2 === 0)",
+            "console.log(2)",
+            "console.log(4)",
+            "console.log(6)"
+        ]
+    },
+    {
+        "initialCode": "// Log the sum of all elements in the array using a loop\nconst numbers = [10, 20, 30, 40];",
+        "expectedOutputs": ["100"],
+        "invalidInputs": [
+            "console.log(100)",
+            "console.log(numbers[0] + numbers[1] + numbers[2] + numbers[3])",
+            "console.log('100')"
+        ]
+    },
+    {
+        "initialCode": "// Log the length of each string in the 'words' array using a loop\nconst words = ['apple', 'banana', 'grape', 'strawberry'];",
+        "expectedOutputs": ["5", "6", "5", "10"],
+        "invalidInputs": [
+            "console.log(words.length)",
+            "console.log('apple'.length)",
+            "console.log('banana'.length)",
+            "console.log('grape'.length)",
+            "console.log('strawberry'.length)"
+        ]
+    },
+    {
+        "initialCode": "// Log only the names from the 'people' array using a loop\nconst people = [\n\t{name: 'Alice', age: 30},\n\t{name: 'Bob', age: 25},\n\t{name: 'Charlie', age: 35}\n];",
+        "expectedOutputs": ["Alice", "Bob", "Charlie"],
+        "invalidInputs": [
+            "console.log('Alice')",
+            "console.log('Bob')",
+            "console.log('Charlie')",
+            "console.log(people[0].name)",
+            "console.log(people[1].name)",
+            "console.log(people[2].name)"
+        ]
+    }
+]

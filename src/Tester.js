@@ -1,4 +1,5 @@
 import tests from "./tests/tests.json";
+import testsBoucle from "./tests/testsBoucle.json"
 
 class Tester {
     tests = [];
@@ -63,11 +64,24 @@ class Tester {
         this.restartTest();
     }
 
-    newSession() {
-        this.tests = tests;
+    /**
+     *
+     * @param {"normal" | "boucles"} mode
+     */
+    newSession(mode = "normal") {
 
-        for (let i = 0; i < this.tests.length; i++) {
-            this.remainingTests.push(i);
+        if(mode == "normal") {
+            this.tests = tests;
+
+            for (let i = 0; i < this.tests.length; i++) {
+                this.remainingTests.push(i);
+            }
+        } else if (mode == "boucles") {
+            this.tests = testsBoucle
+
+            for (let i = 0; i < this.tests.length; i++) {
+                this.remainingTests.push(i);
+            }
         }
 
         this.newTest(true);

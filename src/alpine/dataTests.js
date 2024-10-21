@@ -23,7 +23,7 @@ export default (tester) => {
                 eventBus.emit("testPassed");
                 this.isTestPassed = true;
             } else {
-                alert(details)
+                alert(details);
                 eventBus.emit("testInvalidated");
                 this.isTestPassed = false;
             }
@@ -39,17 +39,23 @@ export default (tester) => {
             tester.newTest();
         },
 
-        newSession() {
-            tester.newSession(true);
+        /**
+         *
+         * @param {"normal" | "boucles"} mode
+         */
+        newSession(mode = "normal") {
+            tester.newSession(mode);
         },
 
-        lastTest(){
-            tester.lastTest()
+        lastTest() {
+            tester.lastTest();
         },
 
         init() {
             eventBus.on("lastTest", this.lastTest);
-            eventBus.on("newSessionLaunched", this.newSession);
+            eventBus.on("newSessionLaunched", (e) => {
+                return this.newSession(e?.detail?.topic || "normal");
+            });
         },
     };
 };
