@@ -1,3 +1,5 @@
+import '@fortawesome/fontawesome-free/css/all.css';
+
 import "./src/EventBus";
 import Alpine from "alpinejs";
 import Editor from "./src/CodeEditor";
