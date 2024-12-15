@@ -1,7 +1,7 @@
 import ace from "ace-builds/src-noconflict/ace";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/mode-json";
+import "ace-builds/src-noconflict/mode-json"; //test
 
 class Editor {
     constructor() {
