@@ -62,7 +62,7 @@
         "invalidInputs": ["console.log('123 Street')", "console.log(\"123 Street\")"]
     },
     {
-        "initialCode": "// Log the street address of the main address of the customer\nconst order = {\n\torderNumber: '12345',\n\torderDate: '2024-07-05',\n\tcustomer: {\n\t\tname: 'Alice',\n\t\temail: 'alice@example.com',\n\t\taddresses: [\n\t\t\t{\n\t\t\t\tstreet: '123 Street',\n\t\t\t\tcity: 'New York',\n\t\t\t\tstate: 'NY',\n\t\t\t\tzip: '10001',\n\t\t\t\tisMain: true\n\t\t\t},\n\t\t\t{\n\t\t\t\tstreet: '456 Avenue',\n\t\t\t\tcity: 'Los Angeles',\n\t\t\t\tstate: 'CA',\n\t\t\t\tzip: '90001',\n\t\t\t\tisMain: false\n\t\t\t}\n\t\t]\n\t},\n\titems: [\n\t\t{ name: 'Item 1', price: 50, quantity: 2 },\n\t\t{ name: 'Item 2', price: 30, quantity: 1 }\n\t]\n};",
+        "initialCode": "// Log the city name of the main address of the customer\nconst order = {\n\torderNumber: '12345',\n\torderDate: '2024-07-05',\n\tcustomer: {\n\t\tname: 'Alice',\n\t\temail: 'alice@example.com',\n\t\taddresses: [\n\t\t\t{\n\t\t\t\tstreet: '123 Street',\n\t\t\t\tcity: 'New York',\n\t\t\t\tstate: 'NY',\n\t\t\t\tzip: '10001',\n\t\t\t\tisMain: true\n\t\t\t},\n\t\t\t{\n\t\t\t\tstreet: '456 Avenue',\n\t\t\t\tcity: 'Los Angeles',\n\t\t\t\tstate: 'CA',\n\t\t\t\tzip: '90001',\n\t\t\t\tisMain: false\n\t\t\t}\n\t\t]\n\t},\n\titems: [\n\t\t{ name: 'Item 1', price: 50, quantity: 2 },\n\t\t{ name: 'Item 2', price: 30, quantity: 1 }\n\t]\n};",
         "expectedOutputs": ["New York"],
         "invalidInputs": ["console.log('New York')", "console.log(\"New York\")"]
     },
