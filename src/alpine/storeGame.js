@@ -69,8 +69,22 @@ export default {
     init() {
         const handleGoodAnswer = () => {
             this.goodAnswersNb++;
+            AddOneToLocalStorage();
         };
 
         eventBus.on("testPassed", handleGoodAnswer);
     },
 };
+
+
+function AddOneToLocalStorage(){
+    const item = localStorage.getItem("test")
+
+    if(!item) {
+        localStorage.setItem("test", 1)
+        return
+    }
+
+    const itemAsNum = Number(item)
+    localStorage.setItem("test", itemAsNum + 1)
+}
